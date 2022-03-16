@@ -67,6 +67,7 @@ $schema_content = '';
 $import_chartjs = true;
 $no_auto_toc = true;
 $gh_url = "https://github.com/nf-core/modules/tree/master/" . str_replace("/meta.yml", "", $module['github_path']);
+$module_install_name =str_replace(array("/meta.yml","modules/"), "", $module['github_path']);
 
 # Header - keywords
 $header_html = '<p class="mb-0">';
@@ -100,7 +101,7 @@ include('../includes/header.php');
         <p>
         <div class="input-group input-group module-install-cmd w-50">
             <span class="input-group-text"><i class="fas fa-terminal"></i></span>
-            <input type="text" class="form-control input code" id="module-install-cmd-text" data-autoselect="" value="nf-core modules install <?php echo $module['name']; ?>" aria-h3="Copy install command" readonly="">
+            <input type="text" class="form-control input code" id="module-install-cmd-text" data-autoselect="" value="nf-core modules install <?php echo $module_install_name; ?>" aria-h3="Copy install command" readonly="">
             <button class="btn btn-outline-secondary copy-txt" data-bs-target="module-install-cmd-text" data-bs-toggle="tooltip" data-bs-placement="left" title="Copy to clipboard" type="button"><i class="fas fa-clipboard px-1"></i></button>
         </div>
         </p>
