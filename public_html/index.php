@@ -38,12 +38,11 @@ if ($curr_event) {
     $curr_event['meta']['location_dropdown'] = '';
     if (array_key_exists('location_url', $curr_event) && $curr_event['ongoing']) {
         if (count($curr_event['location_url']) == 1) {
-            $url = $curr_event['location_url'];
+            $url = $curr_event['location_url'][0];
             if ($url[0] == '#') {
                 $url = $curr_event['url'] . $url;
             }
             $m = $curr_event['meta']['location_url_meta'];
-
             $curr_event['meta']['location_dropdown'] =
                 '<a class="btn btn-success me-2 mb-2" href="' . $url . '">' . $m[0]['icon'] . ' Watch now</a>';
         } else {
