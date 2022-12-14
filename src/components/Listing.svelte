@@ -1,12 +1,12 @@
 <script>
-    export let pipelines = [];
+    export let input = [];
     import PipelineCard from './PipelineCard.svelte';
     import { CurrentFilter, SortBy, DisplayStyle, SearchQuery } from './filter.js';
 
     import { Card, CardHeader, CardBody, CardFooter } from 'sveltestrap';
     let displayStyle = 'grid';
 
-    const searchPipelines = (pipeline) => {
+    const searchInput = (pipeline) => {
         if ($SearchQuery === '') {
             return true;
         }
@@ -22,7 +22,7 @@
         return false;
     };
 
-    const filterPipelines = (pipeline) => {
+    const filterInput = (pipeline) => {
         if ($CurrentFilter.includes('Released') && pipeline.releases.length > 0 && !pipeline.archived ) {
             return true;
         }
@@ -35,7 +35,7 @@
         return false;
     };
 
-    const sortPipelines = (a, b) => {
+    const sortInput = (a, b) => {
         if ($SortBy === 'Alphabetical') {
             return a.name.localeCompare(b.name);
         } else if ($SortBy === 'Stars') {
@@ -54,25 +54,25 @@
             );
         }
     };
-    function searchFilterSortPipelines(pipelines) {
-        return pipelines.filter(filterPipelines).sort(sortPipelines).filter(searchPipelines);
+    function searchFilterSortInput(input) {
+        return input.filter(filterInput).sort(sortInput).filter(searchInput);
     }
     SortBy.subscribe(() => {
-        filteredPipelines = searchFilterSortPipelines(pipelines);
+        filteredInput = searchFilterSortInput(input);
     });
     CurrentFilter.subscribe(() => {
-        filteredPipelines = searchFilterSortPipelines(pipelines);
+        filteredInput = searchFilterSortInput(input);
     });
     SearchQuery.subscribe(() => {
-        filteredPipelines = searchFilterSortPipelines(pipelines);
+        filteredInput = searchFilterSortInput(input);
     });
 
-    $: filteredPipelines = searchFilterSortPipelines(pipelines);
+    $: filteredInput = searchFilterSortInput(input);
 </script>
 
 <div class="listing d-flex flex-wrap w-100 justify-content-center">
     {#if $DisplayStyle === 'grid'}
-        {#each filteredPipelines as pipeline (pipeline.name)}
+        {#each filteredInput as pipeline (pipeline.name)}
             <PipelineCard {pipeline} />
         {/each}
     {:else if $DisplayStyle === 'table'}
@@ -87,7 +87,7 @@
                 </tr>
             </thead>
             <tbody>
-                {#each filteredPipelines as pipeline}
+                {#each filteredInput as pipeline}
                     <tr>
                         <td>
                             <a href={pipeline.html_url} target="_blank">{pipeline.name}</a>

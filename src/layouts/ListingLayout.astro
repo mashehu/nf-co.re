@@ -15,7 +15,7 @@ const {input, title, description, filter, displayStyle, sortBy }= Astro.props;
 
 <PageLayout title={title} subtitle={description}>
     <FilterBar filter={filter} displayStyle={displayStyle} sortBy={sortBy} client:visible/>
-    <Listing pipelines={input} client:visible/>
+    <Listing input={input} client:visible/>
     <slot />
 </PageLayout>
 
