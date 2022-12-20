@@ -1,0 +1,13 @@
+---
+import { element } from "svelte/internal";
+
+const {elements} = Astro.props
+
+---
+
+<nav class="nav nav-tabs flex-column flex-sm-row">
+
+    {elements.map((element)=>{
+        return <a class={"flex-sm-fill text-sm-center nav-link "+ (element.active ? "active": "")} href={"#"+element.name.toLowerCase()}>{element.name}</a>
+    })}
+</nav>

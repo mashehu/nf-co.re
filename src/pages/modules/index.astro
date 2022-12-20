@@ -1,60 +1,57 @@
 ---
-
-import ListingLayout from '../../layouts/ListingLayout.astro';
-import { parseDocument } from 'yaml';
-// import yaml from 'js-yaml';
+import FilterBar from '../../components/FilterBar.svelte';
+import ModulesListing from '../../components/ModulesListing.svelte';
 import octokit from '../../components/oktokit';
-// fetch modules from nf-core/modules github repo from the "modules" directory
-// const modules = await fetch('https://api.github.com/repos/nf-core/modules/contents/modules/nf-core?per_page=100').then(
-//     (res) => res.json()
-// );
-const modules = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+import ListingLayout from '../../layouts/ListingLayout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import { parse } from 'yaml';
+import { get } from 'svelte/store';
+
+// get meta.yml from nf-core/modules using octokit and git trees
+const tree = await octokit.request('GET /repos/{owner}/{repo}/git/trees/{tree_sha}', {
     owner: 'nf-core',
     repo: 'modules',
-    path: 'modules/nf-core',
-    per_page: 100,
-})
-// fetch meta.yml from modules and write them into an array
-const meta = await Promise.all(
-    modules.map(async (module) => {
-        let meta = await fetch(
-            `https://raw.githubusercontent.com/nf-core/modules/master/modules/nf-core/${module.name}/meta.yml`
-        ).then((res) => res.text());
-        // let meta = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-        //     owner: 'nf-core',
-        //     repo: 'modules',
-        //     path: `modules/nf-core/${module.name}/meta.yml`,
-        // }).then((res) => res.data);
-        console.log(parseDocument(meta));
-        // ignore modules without meta.yml
-        // if (meta === '404: Not Found') {
-        //     return;
-        // }
-        // meta = yaml.load(meta);
-        return meta;
-    })
-);
+    tree_sha: 'master',
+    recursive: "true",
+}).then((response) => {
+    return response.data.tree;
+});
 
+    // console.log(tree);
 
-console.log(meta);
+const modules = tree.filter((file) => {
+    return (file.path.includes('meta.yml') && !file.path.includes("subworkflows/"));
+}).map((file) => {
+           return {name: file.path.replace("modules/nf-core/","")
+                                .replace("/meta.yml","")
+                                .replace("/","_"),
+                 path: file.path}
+                });
+const meta = await modules.map((module) => {
+    return octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+        owner: 'nf-core',
+        repo: 'modules',
+        path: module.path,
+    }).then((response) => {
+        const content = parse(Buffer.from(response.data.content, 'base64').toString());
+        return content;
+    });
+});
+
+// console.log("meta : \n",await meta[12]);
+
 const title = 'nf-core/modules';
-const description = `We currently have ${modules.length} modules available.`;
+
 ---
 
-<ListingLayout
-    title={title}
-    description={description}
-    input={meta}
-    filter={[
-        { name: 'Released', count: 0 },
-        { name: 'Under development', count: 0 },
-        { name: 'Archived', count: 0 },
-    ]}
-    sortBy={['Last release', 'Alphabetical', 'Stars']}
+<PageLayout title={title} subtitle={'Browse the '+ meta.length+' modules that are currently available as part of nf-core.'}>
+    <FilterBar
     displayStyle={[
         { name: 'grid', icon: 'fa-regular fa-grid-2' },
         { name: 'table', icon: 'fa-regular fa-bars' },
     ]}
-/>
+    sortBy={['Last release', 'Alphabetical']} client:visible/>
+    <ModulesListing input={meta} client:visible/>
+</PageLayout>
 
 <style></style>

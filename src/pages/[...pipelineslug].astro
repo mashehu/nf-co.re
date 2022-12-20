@@ -1,0 +1,61 @@
+---
+import Markdown from '@components/Markdown.astro';
+import pipeline_names from '../../public/pipeline_names.json';
+import PageLayout from '../layouts/PageLayout.astro';
+import Tabs from '@components/Tabs.astro';
+import octokit from '@components/oktokit';
+import { Props } from 'astro-icon/lib/Icon.astro';
+var all_paths
+
+
+
+
+export async function getStaticPaths() {
+    // go through all the pipelines and create a page for each one
+    const paths = await Promise.all(pipeline_names.pipeline.map(async (pipeline_name) => {
+        // using octokit get all markdown files inside docs/ on github
+        let docs
+
+        try {
+            docs = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+                owner: 'nf-core',
+                repo: pipeline_name,
+                path: 'docs',
+                per_page: 100,
+            }).then((res) =>
+                // only return markdown files
+                res.data.filter((doc) => doc.name.endsWith('.md') && !doc.name.startsWith('README')));
+        } catch (e) {
+            console.log(e);
+        }
+        const params = [{params: { pipelineslug: pipeline_name },
+                        props: {url: pipeline_name + "/master/README.md", docs: docs}}]
+        if (docs) {
+            docs.forEach((doc) => {
+                params.push({
+                    params: { pipelineslug: pipeline_name + "/" + doc.name.replace('.md', '') },
+                    props: {url: pipeline_name + "/master/" + doc.path}
+                            })
+            })
+        }
+    return params;
+
+    }))
+    return paths;
+}
+const { pipelineslug } = Astro.params;
+const { url, docs } = Astro.props;
+const description = 'TODO: fetch description';
+const elements = docs.map((doc) => {
+    return {
+        name: doc.name.replace('.md', ''),
+        url: pipelineslug + "/" + doc.name.replace('.md', '')
+    }
+})
+elements.unshift({name: 'Introduction', url: pipelineslug})
+---
+
+<PageLayout title={'nf-core/' + pipelineslug} subtitle={description}>
+    <Tabs elements={elements}/>
+    <Markdown url={url} />
+</PageLayout>

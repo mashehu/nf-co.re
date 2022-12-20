@@ -2,8 +2,8 @@
     import { ButtonGroup, Button, Input } from 'sveltestrap';
     import { onMount } from 'svelte';
     import { CurrentFilter, SortBy, DisplayStyle, SearchQuery } from './filter.js';
-    export let filter;
-    export let sortBy;
+    export let filter = [];
+    export let sortBy = [];
     export let displayStyle;
 
     let search = $SearchQuery;
