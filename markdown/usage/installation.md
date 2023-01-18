@@ -15,7 +15,7 @@ See [nextflow.io](https://www.nextflow.io/docs/latest/getstarted.html#installati
 
 Nextflow runs on most POSIX systems (Linux, macOS, etc) and can typically be installed by running these commands:
 
-```console
+```bash
 # Make sure that Java v8+ is installed:
 java -version
 
@@ -108,8 +108,8 @@ wget -qO- get.nextflow.io | bash
 sudo mv nextflow /usr/local/bin/
 nextflow run nf-core/rnaseq -profile test,docker -r 3.0 --outdir <OUTDIR>
 ```
-
-> Note: if you don't have the `sudo` privileges required for the command above, you can move the `nextflow` binary to another directory and export that directory to `$PATH` instead. One way of doing that on Linux would be to add `export PATH=$PATH:/path/to/nextflow/binary/` to your `~/.bashrc` file so that it is available every time you log into your system.
+> **Note**
+> If you don't have the `sudo` privileges required for the command above, you can move the `nextflow` binary to another directory and export that directory to `$PATH` instead. One way of doing that on Linux would be to add `export PATH=$PATH:/path/to/nextflow/binary/` to your `~/.bashrc` file so that it is available every time you log into your system.
 
 - Manually download and install Nextflow from the available [assets](https://github.com/nextflow-io/nextflow/releases) on Github. See the [Nextflow installation docs](https://www.nextflow.io/docs/latest/getstarted.html#installation).
 
