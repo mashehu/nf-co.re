@@ -37,7 +37,12 @@ export function getStaticPaths() {
 const { pipeline, version, md_file } = Astro.params;
 const { versions, md_files, description } = Astro.props;
 if (md_file === 'results') {
-    return Astro.redirect(`/${pipeline}/${version}/results/`);
+    const releaseSHA = pipelines_json.remote_workflows
+        .find((p) => p.name === pipeline)
+        ?.releases.find((r) => r.tag_name === version)?.sha;
+    const prefix = `${pipeline}/results-${releaseSHA}/`;
+    const baseURL = `/${pipeline}/${version}/`;
+    return Astro.redirect(baseURL + 'results/' + prefix);
 }
 let headings: {
     depth: number;
