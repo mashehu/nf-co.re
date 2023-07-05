@@ -3,16 +3,20 @@ import { buildCache } from 'bin/build-cache';
 import { writeComponentsJson } from 'bin/components.json.js';
 import { writePipelinesJson } from 'bin/pipelines.json.js';
 import { exec } from 'child_process';
-
+import path from 'path';
 
 export const handler: Handler = async () => {
     try {
         console.log('Building cache...');
         // await runCommand('node ../../bin/pipelines.json.js');
         // await runCommand('node ../../bin/components.json.js');
+        console.log(process.env);
+        console.log(__dirname);
+        console.log('cwd', process.cwd());
+        console.log(path.resolve(__dirname, '../../../bin/pipelines.json.js'));
         writePipelinesJson();
-        writeComponentsJson();
-        buildCache();
+        // writeComponentsJson();
+        // buildCache();
         // await runCommand('tar -cJf --no-xattrs -f .cache.tar.xz .cache');
 
         return {

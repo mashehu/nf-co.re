@@ -27,12 +27,18 @@ jobs:
 
       - name: create pipeline.json
         run: npm run build-pipeline-json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: create component.json
         run: npm run build-component-json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: make md cache
         run: node bin/build-cache.js && tar -cJf --no-xattrs -f .cache.tar.xz .cache",
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Commit and push the changes
       - name: Commit and push changes
