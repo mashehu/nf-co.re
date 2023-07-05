@@ -5,6 +5,7 @@ import yaml from 'js-yaml';
 import path, { join } from 'path';
 import ProgressBar from 'progress';
 
+
 // get current path
 const __dirname = path.resolve();
 
@@ -36,11 +37,6 @@ export const writePipelinesJson = async () => {
   // go through names and add or update pipelines in pipelines.json
   await Promise.all(
     names.map(async (name) => {
-      // print current name if this script is run within a GitHub action
-      if (process.env.GITHUB_ACTIONS) {
-        console.log(`::set-output name=pipeline::${name}`);
-      }
-
       // get the details from the github repo description
       const data = await octokit.rest.repos
         .get({
