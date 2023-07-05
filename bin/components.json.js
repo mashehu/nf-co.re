@@ -6,6 +6,7 @@ import path, { join } from 'path';
 import ProgressBar from 'progress';
 import { parse } from 'yaml';
 
+
 // get current path
 const __dirname = path.resolve();
 
@@ -173,6 +174,7 @@ export const writeComponentsJson = async () => {
       return 1;
     }
   });
+  console.log('  writing components.json');
   // write the components.json file
   writeFileSync(path.join(__dirname, '/public/components.json'), JSON.stringify(components, null, 2));
 };

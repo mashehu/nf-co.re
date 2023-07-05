@@ -214,6 +214,8 @@ export const writePipelinesJson = async () => {
     return a.name.localeCompare(b.name);
   });
   const json = JSON.stringify(pipelines, null, 4);
+
+  console.log('Writing pipelines.json');
   await writeFileSync(path.join(__dirname, '/public/pipelines.json'), json, 'utf8');
 };
 
