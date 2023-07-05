@@ -5,14 +5,28 @@ import { Octokit } from 'octokit';
 if (!import.meta.env) {
   dotenv.config();
 }
-console.log('testing env vars');
-console.log('import.meta.env', import.meta.env);
-console.log('process.env', process.env);
 const octokit = new Octokit({
   // different env vars for node (used for scripts in `bin/`) and astro
   auth: import.meta.env ? import.meta.env.GITHUB_TOKEN : process.env.GITHUB_TOKEN,
 });
 export default octokit;
+
+export async function getCurrentRateLimitRemaining() {
+  try {
+    // Make a request to any endpoint (e.g., get the authenticated user)
+    const response = await octokit.rest.repos.get({
+      owner: 'nf-core',
+      repo: 'nf-co.re',
+    });
+
+    // Get the 'x-ratelimit-remaining' header from the response headers
+    const rateLimitRemaining = response.headers['x-ratelimit-remaining'];
+
+    console.log(`Rate limit remaining: ${rateLimitRemaining}`);
+  } catch (error) {
+    console.error('Error occurred:', error);
+  }
+}
 
 export const getGitHubFile = async (repo, path, ref) => {
   // console.log(`Getting ${path} from ${repo} ${ref}`);
