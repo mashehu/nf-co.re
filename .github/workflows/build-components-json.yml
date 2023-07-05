@@ -10,6 +10,7 @@ on:
 jobs:
   build-component-json:
     runs-on: ubuntu-latest
+    environment: static-file-build
 
     steps:
       # Set up the main website repo
@@ -28,7 +29,7 @@ jobs:
       - name: create component.json
         run: npm run build-component-json
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PIPLINE_JSON_BUILD_TOKEN }}
       # Commit and push the changes
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v9
