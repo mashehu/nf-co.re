@@ -26,7 +26,7 @@
             "forks_count": 18,
             "archived": false,
             "disabled": false,
-            "open_issues_count": 17,
+            "open_issues_count": 18,
             "allow_forking": true,
             "is_template": false,
             "web_commit_signoff_required": false,
@@ -39,11 +39,11 @@
             ],
             "visibility": "public",
             "forks": 18,
-            "open_issues": 17,
+            "open_issues": 18,
             "watchers": 26,
             "default_branch": "master",
             "network_count": 18,
-            "subscribers_count": 107,
+            "subscribers_count": 108,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -316,7 +316,7 @@
             "watchers": 119,
             "default_branch": "master",
             "network_count": 77,
-            "subscribers_count": 115,
+            "subscribers_count": 116,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -771,7 +771,7 @@
             "watchers": 141,
             "default_branch": "master",
             "network_count": 102,
-            "subscribers_count": 106,
+            "subscribers_count": 107,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -1051,7 +1051,7 @@
             "watchers": 42,
             "default_branch": "master",
             "network_count": 28,
-            "subscribers_count": 109,
+            "subscribers_count": 110,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -1220,7 +1220,7 @@
             "watchers": 43,
             "default_branch": "master",
             "network_count": 23,
-            "subscribers_count": 93,
+            "subscribers_count": 94,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -1346,7 +1346,7 @@
             "watchers": 9,
             "default_branch": "master",
             "network_count": 9,
-            "subscribers_count": 94,
+            "subscribers_count": 95,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -1495,7 +1495,7 @@
             "watchers": 148,
             "default_branch": "master",
             "network_count": 117,
-            "subscribers_count": 104,
+            "subscribers_count": 105,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -1767,7 +1767,7 @@
             "watchers": 16,
             "default_branch": "master",
             "network_count": 11,
-            "subscribers_count": 109,
+            "subscribers_count": 110,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -2080,7 +2080,7 @@
             "watchers": 27,
             "default_branch": "master",
             "network_count": 12,
-            "subscribers_count": 63,
+            "subscribers_count": 64,
             "open_pr_count": 4,
             "contributors": [
                 {
@@ -2203,7 +2203,7 @@
             "watchers": 14,
             "default_branch": "master",
             "network_count": 21,
-            "subscribers_count": 67,
+            "subscribers_count": 68,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -2295,7 +2295,7 @@
             "watchers": 7,
             "default_branch": "master",
             "network_count": 0,
-            "subscribers_count": 17,
+            "subscribers_count": 18,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -2405,7 +2405,7 @@
             "watchers": 8,
             "default_branch": "master",
             "network_count": 9,
-            "subscribers_count": 111,
+            "subscribers_count": 112,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -2583,7 +2583,7 @@
             "watchers": 5,
             "default_branch": "dev",
             "network_count": 3,
-            "subscribers_count": 92,
+            "subscribers_count": 93,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -2651,7 +2651,7 @@
             "watchers": 45,
             "default_branch": "master",
             "network_count": 22,
-            "subscribers_count": 117,
+            "subscribers_count": 118,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -4180,7 +4180,7 @@
             "watchers": 11,
             "default_branch": "master",
             "network_count": 9,
-            "subscribers_count": 16,
+            "subscribers_count": 17,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -4322,7 +4322,7 @@
             "watchers": 13,
             "default_branch": "master",
             "network_count": 25,
-            "subscribers_count": 71,
+            "subscribers_count": 72,
             "open_pr_count": 5,
             "contributors": [
                 {
@@ -4425,7 +4425,7 @@
             "watchers": 96,
             "default_branch": "master",
             "network_count": 69,
-            "subscribers_count": 117,
+            "subscribers_count": 118,
             "open_pr_count": 5,
             "contributors": [
                 {
@@ -4872,7 +4872,7 @@
             "watchers": 26,
             "default_branch": "master",
             "network_count": 18,
-            "subscribers_count": 94,
+            "subscribers_count": 95,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -5063,7 +5063,7 @@
             "watchers": 13,
             "default_branch": "master",
             "network_count": 23,
-            "subscribers_count": 129,
+            "subscribers_count": 130,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -5146,7 +5146,7 @@
             "watchers": 8,
             "default_branch": "dev",
             "network_count": 4,
-            "subscribers_count": 118,
+            "subscribers_count": 119,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -5224,7 +5224,7 @@
             "watchers": 80,
             "default_branch": "master",
             "network_count": 43,
-            "subscribers_count": 57,
+            "subscribers_count": 58,
             "open_pr_count": 5,
             "contributors": [
                 {
@@ -5542,7 +5542,7 @@
             "watchers": 35,
             "default_branch": "master",
             "network_count": 9,
-            "subscribers_count": 47,
+            "subscribers_count": 48,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -5912,7 +5912,7 @@
             "watchers": 9,
             "default_branch": "dev",
             "network_count": 8,
-            "subscribers_count": 114,
+            "subscribers_count": 115,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -5979,7 +5979,7 @@
             "watchers": 11,
             "default_branch": "dev",
             "network_count": 5,
-            "subscribers_count": 117,
+            "subscribers_count": 118,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -6084,7 +6084,7 @@
             "watchers": 0,
             "default_branch": "dev",
             "network_count": 1,
-            "subscribers_count": 130,
+            "subscribers_count": 131,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -6151,7 +6151,7 @@
             "watchers": 13,
             "default_branch": "dev",
             "network_count": 13,
-            "subscribers_count": 117,
+            "subscribers_count": 118,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -6260,7 +6260,7 @@
             "watchers": 18,
             "default_branch": "master",
             "network_count": 3,
-            "subscribers_count": 110,
+            "subscribers_count": 111,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -6429,7 +6429,7 @@
             "watchers": 56,
             "default_branch": "master",
             "network_count": 38,
-            "subscribers_count": 92,
+            "subscribers_count": 93,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -6623,7 +6623,7 @@
             "url": "https://api.github.com/repos/nf-core/hicar",
             "created_at": "2021-08-12T15:11:34Z",
             "updated_at": "2023-05-22T10:15:53Z",
-            "pushed_at": "2023-07-05T14:02:21Z",
+            "pushed_at": "2023-07-05T19:38:33Z",
             "homepage": "https://nf-co.re/hicar",
             "size": 36318,
             "stargazers_count": 4,
@@ -6656,7 +6656,7 @@
             "watchers": 4,
             "default_branch": "dev",
             "network_count": 3,
-            "subscribers_count": 37,
+            "subscribers_count": 38,
             "open_pr_count": 3,
             "contributors": [
                 {
@@ -6840,7 +6840,7 @@
             "watchers": 44,
             "default_branch": "master",
             "network_count": 26,
-            "subscribers_count": 110,
+            "subscribers_count": 111,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -7064,7 +7064,7 @@
             "watchers": 20,
             "default_branch": "master",
             "network_count": 13,
-            "subscribers_count": 93,
+            "subscribers_count": 94,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -7157,7 +7157,7 @@
             "watchers": 13,
             "default_branch": "master",
             "network_count": 5,
-            "subscribers_count": 34,
+            "subscribers_count": 35,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -7393,7 +7393,7 @@
             "watchers": 18,
             "default_branch": "dev",
             "network_count": 9,
-            "subscribers_count": 93,
+            "subscribers_count": 94,
             "open_pr_count": 6,
             "contributors": [
                 {
@@ -8096,7 +8096,7 @@
             "watchers": 130,
             "default_branch": "master",
             "network_count": 81,
-            "subscribers_count": 115,
+            "subscribers_count": 116,
             "open_pr_count": 5,
             "contributors": [
                 {
@@ -8878,7 +8878,7 @@
             "watchers": 3,
             "default_branch": "dev",
             "network_count": 2,
-            "subscribers_count": 9,
+            "subscribers_count": 10,
             "open_pr_count": 4,
             "contributors": [
                 {
@@ -8968,7 +8968,7 @@
             "watchers": 107,
             "default_branch": "master",
             "network_count": 113,
-            "subscribers_count": 107,
+            "subscribers_count": 108,
             "open_pr_count": 4,
             "contributors": [
                 {
@@ -9425,7 +9425,7 @@
             "watchers": 24,
             "default_branch": "master",
             "network_count": 22,
-            "subscribers_count": 33,
+            "subscribers_count": 34,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -9790,7 +9790,7 @@
             "watchers": 9,
             "default_branch": "master",
             "network_count": 6,
-            "subscribers_count": 91,
+            "subscribers_count": 92,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -9867,7 +9867,7 @@
             "watchers": 115,
             "default_branch": "master",
             "network_count": 52,
-            "subscribers_count": 89,
+            "subscribers_count": 90,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -10137,7 +10137,7 @@
             "watchers": 4,
             "default_branch": "master",
             "network_count": 1,
-            "subscribers_count": 113,
+            "subscribers_count": 114,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -10263,7 +10263,7 @@
             "watchers": 8,
             "default_branch": "master",
             "network_count": 8,
-            "subscribers_count": 110,
+            "subscribers_count": 111,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -10594,7 +10594,7 @@
             "watchers": 3,
             "default_branch": "master",
             "network_count": 5,
-            "subscribers_count": 127,
+            "subscribers_count": 128,
             "open_pr_count": 0,
             "contributors": [
                 {
@@ -10668,7 +10668,7 @@
             "watchers": 25,
             "default_branch": "dev",
             "network_count": 6,
-            "subscribers_count": 3,
+            "subscribers_count": 4,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -11095,7 +11095,7 @@
             "watchers": 23,
             "default_branch": "master",
             "network_count": 14,
-            "subscribers_count": 116,
+            "subscribers_count": 117,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -11218,7 +11218,7 @@
             "watchers": 31,
             "default_branch": "master",
             "network_count": 17,
-            "subscribers_count": 90,
+            "subscribers_count": 91,
             "open_pr_count": 4,
             "contributors": [
                 {
@@ -11314,7 +11314,7 @@
             "watchers": 12,
             "default_branch": "master",
             "network_count": 18,
-            "subscribers_count": 17,
+            "subscribers_count": 18,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -11427,7 +11427,7 @@
             "url": "https://api.github.com/repos/nf-core/raredisease",
             "created_at": "2021-06-21T09:40:29Z",
             "updated_at": "2023-06-29T01:53:34Z",
-            "pushed_at": "2023-07-05T14:15:05Z",
+            "pushed_at": "2023-07-05T19:19:39Z",
             "homepage": "https://nf-co.re/raredisease",
             "size": 6445,
             "stargazers_count": 46,
@@ -11442,7 +11442,7 @@
             "forks_count": 22,
             "archived": false,
             "disabled": false,
-            "open_issues_count": 31,
+            "open_issues_count": 30,
             "allow_forking": true,
             "is_template": false,
             "web_commit_signoff_required": false,
@@ -11458,11 +11458,11 @@
             ],
             "visibility": "public",
             "forks": 22,
-            "open_issues": 31,
+            "open_issues": 30,
             "watchers": 46,
             "default_branch": "master",
             "network_count": 22,
-            "subscribers_count": 115,
+            "subscribers_count": 116,
             "open_pr_count": 5,
             "contributors": [
                 {
@@ -11751,7 +11751,7 @@
             "watchers": 0,
             "default_branch": "dev",
             "network_count": 1,
-            "subscribers_count": 121,
+            "subscribers_count": 122,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -11897,7 +11897,7 @@
             "watchers": 106,
             "default_branch": "master",
             "network_count": 71,
-            "subscribers_count": 110,
+            "subscribers_count": 111,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -12334,9 +12334,9 @@
             "url": "https://api.github.com/repos/nf-core/rnaseq",
             "created_at": "2018-03-29T13:10:58Z",
             "updated_at": "2023-07-05T01:14:56Z",
-            "pushed_at": "2023-07-05T09:43:39Z",
+            "pushed_at": "2023-07-05T15:48:40Z",
             "homepage": "https://nf-co.re/rnaseq",
-            "size": 64415,
+            "size": 64420,
             "stargazers_count": 638,
             "watchers_count": 638,
             "language": "Nextflow",
@@ -12349,7 +12349,7 @@
             "forks_count": 581,
             "archived": false,
             "disabled": false,
-            "open_issues_count": 42,
+            "open_issues_count": 43,
             "allow_forking": true,
             "is_template": false,
             "web_commit_signoff_required": false,
@@ -12359,12 +12359,12 @@
             ],
             "visibility": "public",
             "forks": 581,
-            "open_issues": 42,
+            "open_issues": 43,
             "watchers": 638,
             "default_branch": "master",
             "network_count": 581,
-            "subscribers_count": 115,
-            "open_pr_count": 4,
+            "subscribers_count": 116,
+            "open_pr_count": 5,
             "contributors": [
                 {
                     "name": "drpatelh",
@@ -13759,7 +13759,7 @@
             "watchers": 17,
             "default_branch": "master",
             "network_count": 17,
-            "subscribers_count": 60,
+            "subscribers_count": 61,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -13889,7 +13889,7 @@
             "updated_at": "2023-07-05T01:42:22Z",
             "pushed_at": "2023-07-05T15:38:23Z",
             "homepage": "https://nf-co.re/sarek",
-            "size": 32641,
+            "size": 32758,
             "stargazers_count": 254,
             "watchers_count": 254,
             "language": "Nextflow",
@@ -13925,7 +13925,7 @@
             "watchers": 254,
             "default_branch": "master",
             "network_count": 307,
-            "subscribers_count": 93,
+            "subscribers_count": 94,
             "open_pr_count": 12,
             "contributors": [
                 {
@@ -15587,7 +15587,7 @@
             "watchers": 87,
             "default_branch": "master",
             "network_count": 93,
-            "subscribers_count": 89,
+            "subscribers_count": 90,
             "open_pr_count": 5,
             "contributors": [
                 {
@@ -16540,7 +16540,7 @@
             "watchers": 50,
             "default_branch": "master",
             "network_count": 100,
-            "subscribers_count": 108,
+            "subscribers_count": 109,
             "open_pr_count": 7,
             "contributors": [
                 {
@@ -16864,7 +16864,7 @@
             "watchers": 24,
             "default_branch": "dev",
             "network_count": 7,
-            "subscribers_count": 114,
+            "subscribers_count": 115,
             "open_pr_count": 0,
             "contributors": [
                 {
@@ -16960,7 +16960,7 @@
             "watchers": 1,
             "default_branch": "dev",
             "network_count": 2,
-            "subscribers_count": 48,
+            "subscribers_count": 49,
             "open_pr_count": 2,
             "contributors": [
                 {
@@ -17051,7 +17051,7 @@
             "watchers": 55,
             "default_branch": "master",
             "network_count": 20,
-            "subscribers_count": 111,
+            "subscribers_count": 112,
             "open_pr_count": 6,
             "contributors": [
                 {
@@ -17329,7 +17329,7 @@
             "watchers": 14,
             "default_branch": "master",
             "network_count": 10,
-            "subscribers_count": 139,
+            "subscribers_count": 140,
             "open_pr_count": 1,
             "contributors": [
                 {
@@ -17418,7 +17418,7 @@
             "watchers": 95,
             "default_branch": "master",
             "network_count": 82,
-            "subscribers_count": 58,
+            "subscribers_count": 59,
             "open_pr_count": 2,
             "contributors": [
                 {
