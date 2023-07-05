@@ -27,7 +27,7 @@ jobs:
           cache: 'npm'
       - run: npm install
       - name: make md cache
-        run: node bin/build-cache.js && tar -cJf --no-xattrs -f .cache.tar.xz .cache
+        run: node bin/build-cache.js && tar -czvf .cache.tar.gz .cache
         env:
           GITHUB_TOKEN: ${{ secrets.PIPLINE_JSON_BUILD_TOKEN }}
 
