@@ -5,6 +5,9 @@ import { Octokit } from 'octokit';
 if (!import.meta.env) {
   dotenv.config();
 }
+console.log('testing env vars');
+console.log('import.meta.env', import.meta.env);
+console.log('process.env', process.env);
 const octokit = new Octokit({
   // different env vars for node (used for scripts in `bin/`) and astro
   auth: import.meta.env ? import.meta.env.GITHUB_TOKEN : process.env.GITHUB_TOKEN,
@@ -12,6 +15,7 @@ const octokit = new Octokit({
 export default octokit;
 
 export const getGitHubFile = async (repo, path, ref) => {
+  // console.log(`Getting ${path} from ${repo} ${ref}`);
   const response = await octokit
     .request('GET /repos/nf-core/{repo}/contents/{path}?ref={ref}', {
       repo: repo,
@@ -24,7 +28,7 @@ export const getGitHubFile = async (repo, path, ref) => {
         console.log(error.request.url);
         return;
       } else {
-        console.log(error);
+        console.log(`something else happened for ${path} in ${repo} ${ref}`, error);
         return;
       }
     })

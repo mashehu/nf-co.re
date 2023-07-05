@@ -1,11 +1,14 @@
 name: Build md cache and json files
 
 on:
-  pull_request:
+  push:
+    branches:
+      - netlfiy-test
+      - astro
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,17 +17,22 @@ jobs:
         with:
           fetch-depth: 0 # Don't do a shallow clone
 
-      # Compile npm dependencies
+      # install npm dependencies
       - name: Set up node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
+          cache: 'npm'
+      - run: npm install
 
-      - name: Install npm dependencies
-        run: npm install
+      - name: create pipeline.json
+        run: npm run build-pipeline-json
 
-      - name: Build md cache and json files
-        run: npm run build-cache
+      - name: create component.json
+        run: npm run build-component-json
+
+      - name: make md cache
+        run: node bin/build-cache.js && tar -cJf --no-xattrs -f .cache.tar.xz .cache",
 
       # Commit and push the changes
       - name: Commit and push changes
