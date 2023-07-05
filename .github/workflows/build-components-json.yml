@@ -1,4 +1,4 @@
-name: Build md cache and json files
+name: build components.json file
 
 on:
   push:
