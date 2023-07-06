@@ -27,7 +27,7 @@ jobs:
           cache: 'npm'
       - run: npm install
       - name: make md cache
-        run: node bin/build-cache.js && tar -czvf .cache.tar.gz .cache
+        run: node bin/build-cache.js && tar -cJf .cache.tar.xz .cache
         env:
           GITHUB_TOKEN: ${{ secrets.CREATE_CACHE_MD_TOKEN }}
 
