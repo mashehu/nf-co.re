@@ -29,7 +29,7 @@ jobs:
       - name: make md cache
         run: node bin/build-cache.js && tar -czvf .cache.tar.gz .cache
         env:
-          GITHUB_TOKEN: ${{ secrets.PIPLINE_JSON_BUILD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CREATE_CACHE_MD_TOKEN }}
 
       # Commit and push the changes
       - name: Commit and push changes

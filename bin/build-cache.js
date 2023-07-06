@@ -27,7 +27,9 @@ export const buildCache = async () => {
     for (const release of releases) {
       // console.log(`Caching ${name} ${release.tag_name}`);
       release.doc_files.push('README.md'); // add the README to the cache
-      release.doc_files.push('nextflow_schema.json'); // add the nextflow_schema.json to the cache
+      if (release.has_schema) {
+        release.doc_files.push('nextflow_schema.json'); // add the nextflow_schema.json to the cache
+      }
       const version = release.tag_name;
       await Promise.all(
         release.doc_files.map(async (f) => {

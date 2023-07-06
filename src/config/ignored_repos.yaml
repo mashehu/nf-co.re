@@ -1,6 +1,7 @@
 # GitHub nf-core repositories that are not pipelines
 ignore_repos:
   - .github
+  - actions-runners
   - awsmegatests
   - configs
   - cookiecutter
@@ -17,6 +18,7 @@ ignore_repos:
   - tools
   - tower-action
   - vscode-extensionpack
+
 
 ignore_topics:
   - nf-core
