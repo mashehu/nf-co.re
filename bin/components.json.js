@@ -6,6 +6,7 @@ import path, { join } from 'path';
 import ProgressBar from 'progress';
 import { parse } from 'yaml';
 
+
 // get current path
 const __dirname = path.resolve();
 
@@ -58,6 +59,16 @@ export const writeComponentsJson = async () => {
 
       module['meta'] = content;
 
+      // get parent folder
+      const parent = module.path.split('/').slice(0, -1).join('/');
+      // get created_at date for each module
+      module['created_at'] = await octokit
+        .request('GET /repos/{owner}/{repo}/commits?path={path}', {
+          owner: 'nf-core',
+          repo: 'modules',
+          path: parent,
+        }).then((response) => response.data[0].commit.author.date);
+
       const index = components.modules.findIndex((m) => m.name === module.name);
       if (index > -1) {
         components.modules[index] = module;
@@ -93,6 +104,17 @@ export const writeComponentsJson = async () => {
         .then((response) => parse(Buffer.from(response.data.content, 'base64').toString()));
 
       subworkflow['meta'] = content;
+
+      // get parent folder
+      const parent = subworkflow.path.split('/').slice(0, -1).join('/');
+      // get created_at date for each module
+      subworkflow['created_at'] = await octokit
+        .request('GET /repos/{owner}/{repo}/commits?path={path}', {
+          owner: 'nf-core',
+          repo: 'modules',
+          path: parent,
+        })
+        .then((response) => response.data[0].commit.author.date);
 
       if (!components.subworkflows) {
         components.subworkflows = [];

@@ -47,6 +47,7 @@
         "fuzzysort": "^2.0.4",
         "hast-util-to-string": "^2.0.0",
         "js-yaml": "^4.1.0",
+        "layercake": "^7.6.1",
         "leaflet": "^1.9.4",
         "mermaid": "^10.3.0",
         "nanostores": "^0.9.3",
