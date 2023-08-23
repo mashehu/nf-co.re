@@ -9,7 +9,7 @@ import components_json from '@public/components.json';
     subtitle="Measuring activity across the nf-core community"
     mainpage_container={false}
 >
-    <ModuleGraph {components_json} />
+    <ModuleGraph {components_json} client:load />
     <!-- <div class="iframe-container w-100 d-flex align-items-start vh-100">
         <i class="mt-5 m-auto text-success fa-regular fa-spinner-third fa-spin fa-3x"></i>
         <iframe
