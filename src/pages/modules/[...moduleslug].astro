@@ -37,6 +37,8 @@ function truncatURLs(url) {
         .replace('/tree/master/', '[...]');
     return url;
 }
+
+const contributors = module.meta.authors || module.meta.maintainers;
 ---
 
 <ComponentPageLayout
@@ -79,7 +81,7 @@ function truncatURLs(url) {
         <div class="col-none col-md-3">
             <SidebarStats
                 component_type={'modules'}
-                contributors={module.meta.authors}
+                contributors={contributors}
                 included_pipelines={module.pipelines}
                 included_subworkflows={module.subworkflows}
             />

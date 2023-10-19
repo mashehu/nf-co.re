@@ -20,6 +20,7 @@ export function getStaticPaths() {
 }
 const { subworkflowslug } = Astro.params;
 const { subworkflow } = Astro.props;
+const contributors = subworkflow.meta.authors || subworkflow.meta.maintainers;
 ---
 
 <ComponentPageLayout
@@ -62,7 +63,7 @@ const { subworkflow } = Astro.props;
         <div class="col-none col-md-2">
             <SidebarStats
                 component_type={'subworkflows'}
-                contributors={subworkflow.meta.authors}
+                contributors={contributors}
                 included_pipelines={subworkflow.pipelines}
                 included_modules={subworkflow.meta.modules}
             />
