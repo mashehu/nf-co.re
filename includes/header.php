@@ -102,6 +102,7 @@ if (isset($subtitle) && strlen($subtitle) > 0) {
   <?php endif;
   if (isset($import_typeform) && $import_typeform): ?>
     <script src="https://embed.typeform.com/next/embed.js"></script>
+    <script src="https://kit.fontawesome.com/a060d5f3ab.js" crossorigin="anonymous"></script>
 
   <?php endif;
   if (isset($title) && $title == 'Publications'): ?>
