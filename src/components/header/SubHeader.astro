@@ -52,6 +52,8 @@ const shaking = version === 'dev' ? '3deg' : '1deg';
                 <a
                     href={`/launch/?pipeline=${pipeline}&release=${version}`}
                     class={'btn btn-success launch-btn btn-md-lg' + (version === 'dev' ? '-dev' : '')}
+                    title="Launch nf-core pipeline"
+                    role="button"
                 >
                     <i class="fa-duotone fa-rocket me-2" />
                     {'Launch ' + (version === 'dev' ? 'development version' : 'version ' + version)}

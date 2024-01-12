@@ -53,3 +53,19 @@ test('dark mode', async ({ page }) => {
     // const bodyBackgroundColorDark2 = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
     // await expect.soft(bodyBackgroundColorDark).toEqual(bodyBackgroundColorDark2);
 });
+
+test('launch page', async ({ page }) => {
+    await page.goto('/sarek');
+    // wait for page to finish loading
+    await page.waitForSelector('.subheader');
+    //  get version number from url
+    const url = await page.url();
+    const version = url.split('/')[4];
+    console.log(url);
+    console.log(version);
+    // check if launch button works
+    await page.getByRole('button', { name: `Launch version ${version}` }).click();
+    // check if launch page is loaded
+    await expect.soft(page.locator('.alert-info')).toContainText('Pipeline: nf-core/sarek');
+
+});
