@@ -2,7 +2,7 @@
 import { html } from 'satori-html';
 import satori, { init as initSatori } from 'satori/wasm';
 import type { APIRoute } from 'astro';
-import sharp from 'sharp';
+import * as sharp from 'sharp';
 // @ts-ignore: no types
 import initYoga from 'yoga-wasm-web/asm';
 import GitHubProfilePicture from '@components/GitHubProfilePicture.svelte';
