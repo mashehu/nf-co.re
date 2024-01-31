@@ -48,16 +48,24 @@ export default defineConfig({
     integrations: [
         svelte(),
         icon({
-            include:{
-            // only include a subset of icons
-            "file-icons":["nextflow"],
-            logos:["twitter","mastodon-icon","slack-icon","aws","microsoft-azure","github-actions", "youtube-icon"],
-            fa:["github"],
-            "fa-brands":["github"],
-            "line-md":["check-list-3-twotone"],
-            "mdi":["aws","slack","youtube"],
-            octicon:["link-external-16","table-16"],
-            }
+            include: {
+                // only include a subset of icons
+                'file-icons': ['nextflow'],
+                logos: [
+                    'twitter',
+                    'mastodon-icon',
+                    'slack-icon',
+                    'aws',
+                    'microsoft-azure',
+                    'github-actions',
+                    'youtube-icon',
+                ],
+                fa: ['github'],
+                'fa-brands': ['github'],
+                'line-md': ['check-list-3-twotone'],
+                mdi: ['aws', 'slack', 'youtube'],
+                octicon: ['link-external-16', 'table-16'],
+            },
         }),
         sitemap(),
         prefetch(),
@@ -190,7 +198,7 @@ export default defineConfig({
                     theme: {
                         dark: 'github-dark',
                         light: 'github-light',
-                    }
+                    },
                 },
             ],
             rehypeKatex,

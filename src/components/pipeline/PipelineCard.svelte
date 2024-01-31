@@ -79,11 +79,11 @@
         {#if body}
             <div class="description flex-grow-1" class:pt-1={recentRelease}><Markdown md={body} /></div>
         {/if}
-        <p class="topics mb-3">
+        <div class="topics mb-3">
             {#each topics as topic}
                 <span class="badge fw-normal bg-body-tertiary text-success me-2">{topic}</span>
             {/each}
-        </p>
+        </div>
 
         {#if released}
             <p class="release">
