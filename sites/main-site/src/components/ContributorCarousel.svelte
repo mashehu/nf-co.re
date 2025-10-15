@@ -2,17 +2,39 @@
     import Marquee from "svelte-fast-marquee";
     import contributors_yml from "../config/contributors.yaml";
 
-    let contributors = contributors_yml.contributors
+    const shuffledContributors = contributors_yml.contributors
         .filter((contributor) => contributor.image_fn)
-        .sort((a, b) => 0.5 - Math.random());
+        .sort(() => 0.5 - Math.random());
 
-    let displayContributors = $state(contributors.slice(0, 10)); // start by displaying 10 contributors
+    const BATCH_SIZE = 5;
+    const INITIAL_SIZE = 10;
 
-    function addMoreContributors() {
-        let moreContributors = contributors.slice(displayContributors.length, displayContributors.length + 5);
-        displayContributors = displayContributors.concat(moreContributors);
-    }
-    setInterval(addMoreContributors, 10000); // Add more contributors every 10 seconds
+    let displayContributors = $state(shuffledContributors.slice(0, INITIAL_SIZE));
+    let currentIndex = $state(INITIAL_SIZE);
+
+    $effect(() => {
+        // Early return if no contributors to cycle through
+        if (shuffledContributors.length <= INITIAL_SIZE) return;
+
+        const intervalId = setInterval(() => {
+            if (currentIndex >= shuffledContributors.length) {
+                // Reset to beginning
+                displayContributors = shuffledContributors.slice(0, INITIAL_SIZE);
+                currentIndex = INITIAL_SIZE;
+            } else {
+                // Add next batch
+                const endIndex = Math.min(currentIndex + BATCH_SIZE, shuffledContributors.length);
+                const newBatch = shuffledContributors.slice(currentIndex, endIndex);
+                displayContributors = [...displayContributors, ...newBatch];
+                currentIndex = endIndex;
+            }
+        }, 5000);
+
+        return () => clearInterval(intervalId);
+    });
+
+    // Create slug once per contributor (memoized function)
+    const getContributorSlug = (fullName) => fullName.toLowerCase().replace(/[^a-z]+/gi, "-");
 </script>
 
 <div id="community" class="homepage-usedby">
@@ -32,8 +54,8 @@
 
         <div class="homepage_contrib_logos">
             <Marquee pauseOnHover={true} speed={50}>
-                {#each displayContributors as contributor (contributor)}
-                    <a href="/contributors/#{contributor.full_name.toLowerCase().replace(/[^a-z]+/i, '-')}">
+                {#each displayContributors as contributor (contributor.full_name)}
+                    <a href="/contributors/#{getContributorSlug(contributor.full_name)}">
                         <img
                             src="/images/contributors/white/{contributor.image_fn}"
                             class="my-lg-3 px-2"
@@ -41,6 +63,9 @@
                             data-bs-toggle="tooltip"
                             title={contributor.full_name}
                             alt={contributor.full_name}
+                            loading="lazy"
+                            height="100"
+                            width="auto"
                         />
                     </a>
                 {/each}
