@@ -1,6 +1,7 @@
 <script lang="ts">
     import ListingTableHeader from "@components/ListingTableHeader.svelte";
     import { SearchQuery, SortBy } from "@components/store";
+    import { parseSearchQuery, matchesSearch } from "@utils/search";
     import { type CollectionEntry } from "astro:content";
 
     interface Props {
@@ -11,21 +12,18 @@
     let { configs, pipelineConfigs }: Props = $props();
     SortBy.set("Name");
 
-    const searchconfigs = (config) => {
-        if ($SearchQuery === "") {
-            return true;
-        }
-        if (config.id.toLowerCase().includes($SearchQuery.toLowerCase())) {
-            return true;
-        }
-        if (config.rendered.metadata.config_profile_description?.toLowerCase().includes($SearchQuery.toLowerCase())) {
-            return true;
-        }
-        if (config.rendered.metadata.executor?.toLowerCase().includes($SearchQuery.toLowerCase())) {
-            return true;
-        }
-        return false;
-    };
+    let searchTerms = $derived(parseSearchQuery($SearchQuery));
+
+    const searchconfigs = (config) =>
+        matchesSearch(
+            {
+                name: config.id,
+                description: config.rendered.metadata.config_profile_description,
+                keywords:
+                    config.rendered.metadata.executor?.split(",").map((executor: string) => executor.trim()) ?? [],
+            },
+            searchTerms,
+        );
     let invertSort = false;
     const sortConfigs = (a, b) => {
         invertSort = $SortBy.endsWith(";inverse");

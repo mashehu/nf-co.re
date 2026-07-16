@@ -2,6 +2,7 @@
     import FilterBar from "@components/FilterBar.svelte";
     import EventCard from "@components/event/EventCard.svelte";
     import { CurrentFilter, SearchQuery } from "@components/store";
+    import { parseSearchQuery, matchesSearch } from "@utils/search";
     import { onMount } from "svelte";
     import type { CollectionEntry } from "astro:content";
 
@@ -19,23 +20,25 @@
         return false;
     };
 
-    const searchEvents = (event: CollectionEntry<"events">) => {
-        if ($SearchQuery === "") {
-            return true;
-        }
-        // return true if it is in any element of event.data
-        if (
-            Object.values(event.data).some((value) => {
-                if (typeof value === "string") {
-                    return value.toLowerCase().includes($SearchQuery.toLowerCase());
-                }
-                return false;
-            })
-        ) {
-            return true;
-        }
-        return false;
-    };
+    let searchTerms = $derived(parseSearchQuery($SearchQuery));
+
+    const searchEvents = (event: CollectionEntry<"events">) =>
+        matchesSearch(
+            {
+                name: event.data.title,
+                description: event.data.subtitle,
+                keywords: [
+                    event.data.type,
+                    ...(event.data.shortTitle ? [event.data.shortTitle] : []),
+                    ...(event.data.locations ?? []).flatMap((location) =>
+                        [location.name, location.city, location.country, location.address].filter(
+                            (value): value is string => typeof value === "string",
+                        ),
+                    ),
+                ],
+            },
+            searchTerms,
+        );
 
     let filteredEvents = $derived(events.filter(filterByType).filter(searchEvents));
 

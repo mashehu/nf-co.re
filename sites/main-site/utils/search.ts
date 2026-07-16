@@ -1,6 +1,7 @@
 import { SearchQuery } from "@components/store";
 
-// Field-scoped search for the listing pages (modules, subworkflows, pipelines).
+// Field-scoped search for the listing pages (pipelines, modules, subworkflows,
+// configs, special-interest-groups, advisories, events).
 //
 // A query is split into space-separated terms (all of which must match — AND).
 // A term may be scoped to a single field with a `field:` prefix, otherwise it

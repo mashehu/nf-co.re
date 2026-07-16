@@ -2,10 +2,10 @@
     import FilterBar from "@components/FilterBar.svelte";
     import AdvisoryCard from "@components/advisory/AdvisoryCard.svelte";
     import { CurrentFilter, SearchQuery } from "@components/store";
+    import { parseSearchQuery, matchesSearch } from "@utils/search";
     import { onMount } from "svelte";
     import type { CollectionEntry } from "astro:content";
-    import { advisoryTypes, advisoryClasses, advisoryIcons } from "./advisoryUtils";
-    import { formatAdvisoryType } from "./advisoryUtils";
+    import { advisoryTypes, advisoryClasses, advisoryIcons, formatAdvisoryType } from "./advisoryUtils";
 
     interface Props {
         advisories?: CollectionEntry<"advisories">[];
@@ -14,7 +14,40 @@
 
     let { advisories = [], currentFilters }: Props = $props();
 
-    let filteredAdvisories = $state(advisories);
+    const formattedAdvisoryTypes = advisoryTypes.map((type) => ({
+        name: type.name,
+        displayName: formatAdvisoryType(type.name),
+        icon: advisoryIcons[type.name],
+        class: advisoryClasses[type.name],
+    }));
+
+    const filterByType = (advisory: CollectionEntry<"advisories">) => {
+        if ($CurrentFilter.length === 0) return true;
+        return $CurrentFilter.some((f) => advisory.data.type.includes(f.name as (typeof advisory.data.type)[number]));
+    };
+
+    let searchTerms = $derived(parseSearchQuery($SearchQuery));
+
+    const pipelineName = (pipeline: string | { name: string }): string =>
+        typeof pipeline === "string" ? pipeline : pipeline.name;
+
+    const searchAdvisories = (advisory: CollectionEntry<"advisories">) =>
+        matchesSearch(
+            {
+                name: advisory.data.title,
+                description: advisory.data.subtitle,
+                keywords: [
+                    advisory.data.severity,
+                    ...advisory.data.type,
+                    ...advisory.data.category,
+                    ...(advisory.data.pipelines ?? []).map(pipelineName),
+                    ...(advisory.data.modules ?? []),
+                ],
+            },
+            searchTerms,
+        );
+
+    let filteredAdvisories = $derived(advisories.filter(filterByType).filter(searchAdvisories));
 
     let sortedAdvisories = $derived(
         [...filteredAdvisories].sort((a, b) => {
@@ -23,42 +56,6 @@
             return dateB - dateA; // Sort by most recent first
         }),
     );
-
-    const formattedAdvisoryTypes = advisoryTypes.map((type) => ({
-        name: type.name,
-        displayName: formatAdvisoryType(type.name),
-        icon: advisoryIcons[type.name],
-        class: advisoryClasses[type.name],
-    }));
-
-    const filterByType = (advisories: CollectionEntry<"advisories">) => {
-        if ($CurrentFilter.length === 0) return true;
-        return $CurrentFilter.some((f) =>
-            advisories.data.type.includes(f.name as (typeof advisories.data.type)[number]),
-        );
-    };
-
-    const searchAdvisories = (advisories: CollectionEntry<"advisories">) => {
-        if ($SearchQuery === "") {
-            return true;
-        }
-        // return true if it is in any element of advisories.data
-        if (
-            Object.values(advisories.data).some((value) => {
-                if (typeof value === "string") {
-                    return value.toLowerCase().includes($SearchQuery.toLowerCase());
-                }
-                return false;
-            })
-        ) {
-            return true;
-        }
-        return false;
-    };
-
-    $effect(() => {
-        filteredAdvisories = advisories.filter(filterByType).filter(searchAdvisories);
-    });
 
     function hasYearChanged(advisories, idx) {
         if (

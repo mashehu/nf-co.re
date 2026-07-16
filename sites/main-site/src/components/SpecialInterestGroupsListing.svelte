@@ -2,6 +2,7 @@
     import ListingTableHeader from "@components/ListingTableHeader.svelte";
     import ListingCard from "./ListingCard.svelte";
     import { DisplayStyle, SearchQuery } from "@components/store";
+    import { parseSearchQuery, matchesSearch } from "@utils/search";
 
     import type { CollectionEntry } from "astro:content";
 
@@ -11,20 +12,19 @@
 
     let { groups = [] }: Props = $props();
 
+    let searchTerms = $derived(parseSearchQuery($SearchQuery));
+
     let filteredGroups = $derived(
-        groups.filter((group) => {
-            if ($SearchQuery === "") {
-                return true;
-            }
-            const q = $SearchQuery.toLowerCase();
-            if (group.data.groupName.toLowerCase().includes(q)) {
-                return true;
-            }
-            if (group.data.subtitle?.toLowerCase().includes(q)) {
-                return true;
-            }
-            return (group.data.pipelines ?? []).some((p) => typeof p === "string" && p.toLowerCase().includes(q));
-        }),
+        groups.filter((group) =>
+            matchesSearch(
+                {
+                    name: group.data.groupName,
+                    description: group.data.subtitle,
+                    keywords: group.data.pipelines ?? [],
+                },
+                searchTerms,
+            ),
+        ),
     );
 
     const getLeadName = (lead: string | object): string => {
